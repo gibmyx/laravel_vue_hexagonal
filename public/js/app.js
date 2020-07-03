@@ -1961,9 +1961,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CrudHexagonal",
   data: function data() {
@@ -1986,12 +1983,14 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("title", this.title);
       formData.append("content", this.content);
       axios.post('/store', formData).then(function (response) {
-        var mensaje = response.data.message;
+        var mensaje = response.data.result;
 
         _this.$toast.success({
           title: 'Éxito',
           message: mensaje
         });
+
+        _this.Listar();
       });
     },
     Listar: function Listar() {
@@ -1999,6 +1998,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/listar').then(function (response) {
         _this2.articulos = response.data.articulos;
+      });
+    },
+    Eliminar: function Eliminar(articulo) {
+      this.$toast.success({
+        title: 'Sorry',
+        message: "Esto no funciona aun :v"
       });
     },
     Actualizar: function Actualizar(articulo) {
@@ -65856,20 +65861,23 @@ var render = function() {
             _vm._v(" "),
             _c(
               "button",
-              { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+              {
+                staticClass: "btn btn-primary",
+                attrs: { type: "submit" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.Eliminar(articulo)
+                  }
+                }
+              },
               [_vm._v("Eliminar")]
             )
           ])
         ])
       }),
       0
-    ),
-    _vm._v(" "),
-    _c("pre", [_vm._v(_vm._s(_vm.id))]),
-    _vm._v(" "),
-    _c("pre", [_vm._v(_vm._s(_vm.title))]),
-    _vm._v(" "),
-    _c("pre", [_vm._v(_vm._s(_vm.content))])
+    )
   ])
 }
 var staticRenderFns = [

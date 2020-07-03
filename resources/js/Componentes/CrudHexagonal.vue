@@ -44,13 +44,10 @@
                 <div class="col-2">
                     <button type="submit" @click.prevent="Actualizar(articulo)" class="btn btn-primary">Actualizar
                     </button>
-                    <button type="submit" class="btn btn-primary">Eliminar</button>
+                    <button type="submit" class="btn btn-primary" @click.prevent="Eliminar(articulo)">Eliminar</button>
                 </div>
             </div>
         </div>
-        <pre>{{id}}</pre>
-        <pre>{{title}}</pre>
-        <pre>{{content}}</pre>
     </div>
 </template>
 
@@ -78,16 +75,23 @@
                 formData.append("content", this.content);
 
                 axios.post('/store', formData).then((response) => {
-                    let mensaje = response.data.message;
+                    let mensaje = response.data.result;
                     this.$toast.success({
                         title: 'Éxito',
                         message: mensaje,
                     });
+                    this.Listar();
                 });
             },
             Listar() {
                 axios.get('/listar').then((response) => {
                     this.articulos = response.data.articulos;
+                });
+            },
+            Eliminar(articulo) {
+                this.$toast.success({
+                    title: 'Sorry',
+                    message: "Esto no funciona aun :v",
                 });
             },
             Actualizar(articulo) {
