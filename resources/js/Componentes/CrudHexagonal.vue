@@ -45,7 +45,7 @@
                 <div class="col-2">
                     <button type="submit" @click.prevent="Actualizar(articulo)" class="btn btn-primary">Actualizar
                     </button>
-                    <button type="submit" class="btn btn-danger" @click.prevent="Eliminar(articulo)">Eliminar</button>
+                    <button type="submit" class="btn btn-danger" @click.prevent="Eliminar(articulo.id)">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -82,6 +82,7 @@
                         message: mensaje,
                     });
                     this.Listar();
+                    this.Limpiar();
                 });
             },
             Listar() {
@@ -89,10 +90,17 @@
                     this.articulos = response.data.articulos;
                 });
             },
-            Eliminar(articulo) {
-                this.$toast.success({
-                    title: 'Sorry',
-                    message: "Esto no funciona aun :v",
+            Eliminar(articulo_id) {
+                let formData = new FormData();
+                formData.append("id", articulo_id);
+
+                axios.post('/delete', formData).then((response) => {
+                    let mensaje = response.data.result;
+                    this.$toast.success({
+                        title: 'Éxito',
+                        message: mensaje,
+                    });
+                    this.Listar();
                 });
             },
             Actualizar(articulo) {

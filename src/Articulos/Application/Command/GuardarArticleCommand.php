@@ -11,7 +11,7 @@ class GuardarArticleCommand implements Command
     private $title;
     private $content;
 
-    public function __construct(?int $id, String $title, string $content)
+    public function __construct(?int $id, String $title = null, string $content = null)
     {
         $this->id = $id;
         $this->title = $title;
@@ -23,12 +23,12 @@ class GuardarArticleCommand implements Command
         return !empty($this->id) ? $this->id : null;
     }
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }

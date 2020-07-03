@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::post('/store', 'ArticleController@store');
 
 Route::get('/listar', 'ArticleController@listar');
+
+Route::post('/delete', 'ArticleController@delete');

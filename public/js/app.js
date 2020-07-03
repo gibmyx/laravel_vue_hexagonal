@@ -1992,6 +1992,8 @@ __webpack_require__.r(__webpack_exports__);
         });
 
         _this.Listar();
+
+        _this.Limpiar();
       });
     },
     Listar: function Listar() {
@@ -2001,10 +2003,20 @@ __webpack_require__.r(__webpack_exports__);
         _this2.articulos = response.data.articulos;
       });
     },
-    Eliminar: function Eliminar(articulo) {
-      this.$toast.success({
-        title: 'Sorry',
-        message: "Esto no funciona aun :v"
+    Eliminar: function Eliminar(articulo_id) {
+      var _this3 = this;
+
+      var formData = new FormData();
+      formData.append("id", articulo_id);
+      axios.post('/delete', formData).then(function (response) {
+        var mensaje = response.data.result;
+
+        _this3.$toast.success({
+          title: 'Éxito',
+          message: mensaje
+        });
+
+        _this3.Listar();
       });
     },
     Actualizar: function Actualizar(articulo) {
@@ -65902,7 +65914,7 @@ var render = function() {
                 on: {
                   click: function($event) {
                     $event.preventDefault()
-                    return _vm.Eliminar(articulo)
+                    return _vm.Eliminar(articulo.id)
                   }
                 }
               },
