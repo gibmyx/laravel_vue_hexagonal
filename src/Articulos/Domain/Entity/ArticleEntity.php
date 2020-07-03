@@ -9,7 +9,7 @@ final class ArticleEntity
     private $title;
     private $content;
 
-    public function __construct(?int $id, string $title, string $content)
+    public function __construct(?int $id = null, string $title = null, string $content = null)
     {
         $this->id = $id;
         $this->title = $title;
@@ -21,12 +21,12 @@ final class ArticleEntity
         return $this->id;
     }
 
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }

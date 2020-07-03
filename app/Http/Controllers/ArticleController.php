@@ -31,6 +31,19 @@ class ArticleController extends Controller
         return response()->json(['result' => 'Article created.']);
     }
 
+    public function delete(Request $request)
+    {
+        $command = new GuardarArticleCommand(
+            $request->input('id'),
+            $request->input('title'),
+            $request->input('content')
+        );
+
+        $this->comandBus->execute($command);
+
+        return response()->json(['result' => 'Article created.']);
+    }
+
     public function listar()
     {
         $articulos = Article::all();

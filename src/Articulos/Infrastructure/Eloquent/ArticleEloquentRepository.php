@@ -25,4 +25,10 @@ class ArticleEloquentRepository implements ArticleRepository
         $objet = $this->model::where('id', $article->getId())->first();
         $objet->update($article->getCreate());
     }
+
+    public function delete(ArticleEntity $article): void
+    {
+        $objet = $this->model::where('id', $article->getId())->first();
+        $objet->delete();
+    }
 }
