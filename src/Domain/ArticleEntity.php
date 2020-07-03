@@ -5,20 +5,20 @@ namespace Spa_auth\Domain;
 
 final class ArticleEntity
 {
-    private $autor_id;
+    private $id;
     private $title;
     private $content;
 
-    public function __construct(?int $autor_id, string $title, string $content)
+    public function __construct(?int $id, string $title, string $content)
     {
-        $this->autor_id = $autor_id;
+        $this->id = $id;
         $this->title = $title;
         $this->content = $content;
     }
 
-    public function getAutorId(): ?int
+    public function getId(): ?int
     {
-        return $this->autor_id;
+        return $this->id;
     }
 
     public function getTitle(): string
@@ -49,7 +49,7 @@ final class ArticleEntity
     public function getCreate(): array
     {
         return [
-            'id' => $this->autor_id,
+            'id' => $this->id,
             'title' => $this->title,
             'content' => $this->content
         ];

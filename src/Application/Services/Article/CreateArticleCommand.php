@@ -7,20 +7,20 @@ use Spa_auth\Application\Contracts\Command;
 class CreateArticleCommand implements Command
 {
 
-    private $autor_id;
+    private $id;
     private $title;
     private $content;
 
-    public function __construct(?int $autor_id, String $title, string $content)
+    public function __construct(?int $id, String $title, string $content)
     {
-        $this->autor_id = $autor_id;
+        $this->id = $id;
         $this->title = $title;
         $this->content = $content;
     }
 
-    public function getAutorId(): ?int
+    public function getId(): ?int
     {
-        return $this->autor_id;
+        return $this->id;
     }
 
     public function getTitle(): string

@@ -18,7 +18,7 @@ final class CreateArticleHandler implements Hendler
     {
 
         $article = new ArticleEntity(
-            $command->getAutorId(),
+            $command->getId(),
             $command->getTitle(),
             $command->getContent()
         );

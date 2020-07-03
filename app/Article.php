@@ -11,5 +11,7 @@ class Article extends Model
         'title',
         'content'
     ];
+    protected $guarded = ['id'];
+
 
 }

@@ -18,7 +18,6 @@ class ArticleController extends Controller
     }
     public function store(Request $request)
     {
-        
         $command = new CreateArticleCommand(
             $request->input('id'),
             $request->input('title'),

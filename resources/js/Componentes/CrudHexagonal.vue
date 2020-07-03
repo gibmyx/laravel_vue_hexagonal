@@ -18,15 +18,18 @@
                         <input type="text" class="form-control" v-model="content" placeholder="Last name">
                     </div>
                     <div class="col-2">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
                     </div>
                 </div>
             </form>
         </div>
         <div class="title mt-5">
             <div class="row">
-                <div class="col-12">
+                <div class="col-10">
                     Listar Articulos
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary" @click.prevent="Listar">Actualizar lista</button>
                 </div>
             </div>
         </div>
@@ -36,13 +39,18 @@
                     <input type="text" class="form-control" v-model="articulo.title" placeholder="First name">
                 </div>
                 <div class="col-5">
-                    <input type="text" class="form-control" v-model="articulo.content"placeholder="Last name">
+                    <input type="text" class="form-control" v-model="articulo.content" placeholder="Last name">
                 </div>
                 <div class="col-2">
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" @click.prevent="Actualizar(articulo)" class="btn btn-primary">Actualizar
+                    </button>
+                    <button type="submit" class="btn btn-primary">Eliminar</button>
                 </div>
             </div>
         </div>
+        <pre>{{id}}</pre>
+        <pre>{{title}}</pre>
+        <pre>{{content}}</pre>
     </div>
 </template>
 
@@ -54,20 +62,14 @@
                 id: '',
                 title: '',
                 content: '',
-                articulos: [
-                    {
-                        id: 1,
-                        title: 'Probando',
-                        content: 'El contenido del articulo'
-                    },
-                    {
-                        id: 2,
-                        title: 'Probando 2',
-                        content: 'El contenido del articulo 2'
-                    },
-                ]
+                articulos: []
             }
         },
+
+        mounted() {
+            this.Listar();
+        },
+
         methods: {
             Guardar() {
                 let formData = new FormData();
@@ -82,6 +84,16 @@
                         message: mensaje,
                     });
                 });
+            },
+            Listar() {
+                axios.get('/listar').then((response) => {
+                    this.articulos = response.data.articulos;
+                });
+            },
+            Actualizar(articulo) {
+                this.id = articulo.id;
+                this.title = articulo.title;
+                this.content = articulo.content;
             },
         },
     }
