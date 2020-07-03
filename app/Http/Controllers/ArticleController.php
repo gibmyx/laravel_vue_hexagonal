@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use Illuminate\Http\Request;
-use Spa_auth\Application\Services\Article\CreateArticleCommand;
-use Spa_auth\Infrastructure\Bus\Contracts\CommandBus;
+use Spa_auth\Articulos\Application\Command\GuardarArticleCommand;
+use Spa_auth\Articulos\Infrastructure\Bus\Contracts\CommandBus;
+
 
 class ArticleController extends Controller
 {
@@ -16,9 +17,10 @@ class ArticleController extends Controller
     {
         $this->comandBus = $commandBus;
     }
+
     public function store(Request $request)
     {
-        $command = new CreateArticleCommand(
+        $command = new GuardarArticleCommand(
             $request->input('id'),
             $request->input('title'),
             $request->input('content')
@@ -32,6 +34,7 @@ class ArticleController extends Controller
     public function listar()
     {
         $articulos = Article::all();
+
         return response()->json(['articulos' => $articulos]);
     }
 
