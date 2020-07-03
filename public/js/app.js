@@ -65806,7 +65806,11 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text", placeholder: "First name" },
+              attrs: {
+                type: "text",
+                disabled: "true",
+                placeholder: "First name"
+              },
               domProps: { value: articulo.title },
               on: {
                 input: function($event) {
@@ -65830,7 +65834,11 @@ var render = function() {
                 }
               ],
               staticClass: "form-control",
-              attrs: { type: "text", placeholder: "Last name" },
+              attrs: {
+                type: "text",
+                disabled: "true",
+                placeholder: "Last name"
+              },
               domProps: { value: articulo.content },
               on: {
                 input: function($event) {

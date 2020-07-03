@@ -23,6 +23,10 @@ final class CreateArticleHandler implements Hendler
             $command->getContent()
         );
 
-        $this->repository->save($article);
+        if(empty($article->getId())) {
+            $this->repository->save($article);
+        }else{
+            $this->repository->update($article);
+        }
     }
 }

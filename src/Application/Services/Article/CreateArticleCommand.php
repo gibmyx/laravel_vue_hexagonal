@@ -20,7 +20,7 @@ class CreateArticleCommand implements Command
 
     public function getId(): ?int
     {
-        return $this->id;
+        return !empty($this->id) ? $this->id : null;
     }
 
     public function getTitle(): string

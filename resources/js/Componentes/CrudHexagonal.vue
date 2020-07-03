@@ -36,10 +36,10 @@
         <div class="listado mt-5">
             <div class="row mt-1" v-for="articulo in articulos" :key="articulo.id">
                 <div class="col-5">
-                    <input type="text" class="form-control" v-model="articulo.title" placeholder="First name">
+                    <input type="text" class="form-control" disabled="true" v-model="articulo.title" placeholder="First name">
                 </div>
                 <div class="col-5">
-                    <input type="text" class="form-control" v-model="articulo.content" placeholder="Last name">
+                    <input type="text" class="form-control" disabled="true" v-model="articulo.content" placeholder="Last name">
                 </div>
                 <div class="col-2">
                     <button type="submit" @click.prevent="Actualizar(articulo)" class="btn btn-primary">Actualizar

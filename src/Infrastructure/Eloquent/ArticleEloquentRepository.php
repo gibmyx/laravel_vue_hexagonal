@@ -17,11 +17,12 @@ class ArticleEloquentRepository implements ArticleRepository
 
     public function save(ArticleEntity $article): void
     {
-        if(empty($article->getId())) {
-            $this->model->create($article->getCreate());
-        }else{
-            $objet = $this->model::where('id', $article->getId())->first();
-            $objet->update($article->getCreate());
-        }
+        $this->model->create($article->getCreate());
+    }
+
+    public function update(ArticleEntity $article): void
+    {
+        $objet = $this->model::where('id', $article->getId())->first();
+        $objet->update($article->getCreate());
     }
 }
