@@ -1,10 +1,10 @@
 <?php
 
-namespace Spa_auth\Infrastructure\Eloquent;
+namespace Spa_auth\Articulos\Infrastructure\Eloquent;
 
 use App\Article;
-use Spa_auth\Domain\ArticleEntity;
-use Spa_auth\Domain\ArticleRepository;
+use Spa_auth\Articulos\Domain\Entity\ArticleEntity;
+use Spa_auth\Articulos\Domain\Repository\ArticleRepository;
 
 class ArticleEloquentRepository implements ArticleRepository
 {

@@ -18,7 +18,8 @@
                         <input type="text" class="form-control" v-model="content" placeholder="Last name">
                     </div>
                     <div class="col-2">
-                        <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-warnir" @click.prevent="Limpiar">Limpiar</button>
                     </div>
                 </div>
             </form>
@@ -44,7 +45,7 @@
                 <div class="col-2">
                     <button type="submit" @click.prevent="Actualizar(articulo)" class="btn btn-primary">Actualizar
                     </button>
-                    <button type="submit" class="btn btn-primary" @click.prevent="Eliminar(articulo)">Eliminar</button>
+                    <button type="submit" class="btn btn-danger" @click.prevent="Eliminar(articulo)">Eliminar</button>
                 </div>
             </div>
         </div>
@@ -98,6 +99,11 @@
                 this.id = articulo.id;
                 this.title = articulo.title;
                 this.content = articulo.content;
+            },
+            Limpiar() {
+                this.id = '';
+                this.title = '';
+                this.content = '';
             },
         },
     }

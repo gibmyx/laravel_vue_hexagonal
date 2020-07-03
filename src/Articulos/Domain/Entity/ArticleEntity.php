@@ -1,6 +1,6 @@
 <?php
 
-namespace Spa_auth\Domain;
+namespace Spa_auth\Articulos\Domain\Entity;
 
 
 final class ArticleEntity

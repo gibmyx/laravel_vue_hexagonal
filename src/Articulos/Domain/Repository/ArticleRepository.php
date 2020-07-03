@@ -1,6 +1,8 @@
 <?php
 
-namespace Spa_auth\Domain;
+namespace Spa_auth\Articulos\Domain\Repository;
+
+use Spa_auth\Articulos\Domain\Entity\ArticleEntity;
 
 interface ArticleRepository
 {

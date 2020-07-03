@@ -1,11 +1,12 @@
 <?php
 
-namespace Spa_auth\Application\Services\Article;
+namespace Spa_auth\Articulos\Application\Handler;
 
-use Spa_auth\Domain\ArticleEntity;
-use Spa_auth\Domain\ArticleRepository;
+use Spa_auth\Articulos\Application\Handler\Contracts\Hendler;
+use Spa_auth\Articulos\Domain\Entity\ArticleEntity;
+use Spa_auth\Articulos\Domain\Repository\ArticleRepository;
 
-final class CreateArticleHandler implements Hendler
+class GuardarArticleHandler implements Hendler
 {
     private $repository;
 

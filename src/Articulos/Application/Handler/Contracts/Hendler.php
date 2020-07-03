@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Spa_auth\Application\Services\Article;
-
+namespace Spa_auth\Articulos\Application\Handler\Contracts;
 
 interface Hendler
 {

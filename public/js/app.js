@@ -1961,6 +1961,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CrudHexagonal",
   data: function data() {
@@ -2010,6 +2011,11 @@ __webpack_require__.r(__webpack_exports__);
       this.id = articulo.id;
       this.title = articulo.title;
       this.content = articulo.content;
+    },
+    Limpiar: function Limpiar() {
+      this.id = '';
+      this.title = '';
+      this.content = '';
     }
   }
 });
@@ -65759,7 +65765,28 @@ var render = function() {
               })
             ]),
             _vm._v(" "),
-            _vm._m(1)
+            _c("div", { staticClass: "col-2" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+                [_vm._v("Guardar")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-warnir",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.Limpiar($event)
+                    }
+                  }
+                },
+                [_vm._v("Limpiar")]
+              )
+            ])
           ])
         ]
       )
@@ -65870,7 +65897,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-primary",
+                staticClass: "btn btn-danger",
                 attrs: { type: "submit" },
                 on: {
                   click: function($event) {
@@ -65901,18 +65928,6 @@ var staticRenderFns = [
           )
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary btn-block", attrs: { type: "submit" } },
-        [_vm._v("Guardar")]
-      )
     ])
   }
 ]
