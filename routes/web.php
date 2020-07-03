@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/store', 'ArticleController@store');
+Route::post('/store', 'ArticleController@guardar');
 
 Route::get('/listar', 'ArticleController@listar');
 

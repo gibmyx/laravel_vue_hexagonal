@@ -19,7 +19,7 @@ class ArticleController extends Controller
         $this->comandBus = $commandBus;
     }
 
-    public function store(Request $request)
+    public function guardar(Request $request)
     {
         $command = new GuardarArticleCommand(
             $request->input('id'),
