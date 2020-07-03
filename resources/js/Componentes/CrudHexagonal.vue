@@ -11,10 +11,11 @@
             <form action="" @submit.prevent="Guardar" method="post" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-5">
-                        <input type="text" class="form-control" placeholder="First name">
+                        <input type="text" class="form-control" v-model="title" placeholder="First name">
+                        <input type="hidden" class="form-control" v-model="id" placeholder="First name">
                     </div>
                     <div class="col-5">
-                        <input type="text" class="form-control" placeholder="Last name">
+                        <input type="text" class="form-control" v-model="content" placeholder="Last name">
                     </div>
                     <div class="col-2">
                         <button type="submit" class="btn btn-primary">Guardar</button>
@@ -50,6 +51,9 @@
         name: "CrudHexagonal",
         data() {
             return {
+                id: '',
+                title: '',
+                content: '',
                 articulos: [
                     {
                         id: 1,
@@ -61,15 +65,23 @@
                         title: 'Probando 2',
                         content: 'El contenido del articulo 2'
                     },
-
-
                 ]
             }
         },
         methods: {
             Guardar() {
-                let modal = $('#' + this.name + 'Modal');
-                modal.modal('hide');
+                let formData = new FormData();
+                formData.append("id", this.id);
+                formData.append("title", this.title);
+                formData.append("content", this.content);
+
+                axios.post('/store', formData).then((response) => {
+                    let mensaje = response.data.message;
+                    this.$toast.success({
+                        title: 'Éxito',
+                        message: mensaje,
+                    });
+                });
             },
         },
     }

@@ -1955,10 +1955,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CrudHexagonal",
   data: function data() {
     return {
+      id: '',
+      title: '',
+      content: '',
       articulos: [{
         id: 1,
         title: 'Probando',
@@ -1972,8 +1976,20 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     Guardar: function Guardar() {
-      var modal = $('#' + this.name + 'Modal');
-      modal.modal('hide');
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append("id", this.id);
+      formData.append("title", this.title);
+      formData.append("content", this.content);
+      axios.post('/store', formData).then(function (response) {
+        var mensaje = response.data.message;
+
+        _this.$toast.success({
+          title: 'Éxito',
+          message: mensaje
+        });
+      });
     }
   }
 });
@@ -65651,7 +65667,81 @@ var render = function() {
             }
           }
         },
-        [_vm._m(1)]
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-5" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.title,
+                    expression: "title"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "First name" },
+                domProps: { value: _vm.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.title = $event.target.value
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.id,
+                    expression: "id"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "hidden", placeholder: "First name" },
+                domProps: { value: _vm.id },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.id = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-5" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.content,
+                    expression: "content"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "Last name" },
+                domProps: { value: _vm.content },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.content = $event.target.value
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
+        ]
       )
     ]),
     _vm._v(" "),
@@ -65736,28 +65826,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-5" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "First name" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-5" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", placeholder: "Last name" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-2" }, [
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-          [_vm._v("Guardar")]
-        )
-      ])
+    return _c("div", { staticClass: "col-2" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
     ])
   },
   function() {

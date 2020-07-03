@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Article;
 use Illuminate\Http\Request;
 use Spa_auth\Application\Services\Article\CreateArticleCommand;
 use Spa_auth\Infrastructure\Bus\Contracts\CommandBus;
@@ -15,21 +16,24 @@ class ArticleController extends Controller
     {
         $this->comandBus = $commandBus;
     }
-    public function store()
+    public function store(Request $request)
     {
-        $author_id = null;
-        $title = "Titulo prueba 2";
-        $content = "Contenido del post 2";
-
+        
         $command = new CreateArticleCommand(
-            $author_id,
-            $title,
-            $content
+            $request->input('id'),
+            $request->input('title'),
+            $request->input('content')
         );
 
         $this->comandBus->execute($command);
 
         return response()->json(['result' => 'Article created.']);
+    }
+
+    public function listar()
+    {
+        $articulos = Article::all();
+        return response()->json(['articulos' => $articulos]);
     }
 
 }
